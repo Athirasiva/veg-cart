@@ -4,7 +4,10 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { Card, Button, Row, Col } from "react-bootstrap";
 // import Card from 'react-bootstrap/Card';
+import { useDispatch } from "react-redux";
+import { addTocart } from "../../redux/cartSlice";
 function DataRow() {
+  const dispatch = useDispatch();
   return (
   
     <Row xs={1} sm={2} md={3} lg={4} className="g-4 mt-3 ms-3">
@@ -18,7 +21,7 @@ function DataRow() {
                {item.description.slice(0,80)}...
                <h6>Price :₹ {item.price}</h6>
               </Card.Text>
-              <button className="cart-btn">Add to Cart</button>
+              <button className="cart-btn" onClick={()=>dispatch(addTocart(item))}>Add to Cart</button>
             </Card.Body>
           </Card>
         </Col>
