@@ -12,7 +12,7 @@ function Header() {
   
   return (
     <div>
-     <Navbar className='nav-bar'>
+     <Navbar className='nav-bar' fixed="top">
         <Container>
           <Navbar.Brand href="#home" className='text-light'>Eat Veg</Navbar.Brand>
           <Nav >
