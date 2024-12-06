@@ -1,5 +1,6 @@
 .nav-bar {
     background-color: green;
+    height: 80px;
 }
 
 .nav-item {
@@ -15,4 +16,8 @@
 .nav-bar .cart-btn:hover{
     background-color: green;
     /* color: black; */
+}
+.nav-bar img{
+    max-height: 80px;         /* Optional: Limit the size of the logo */
+  width: auto;
 }

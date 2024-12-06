@@ -12,6 +12,9 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { emptyCart, removeFromCart } from "../../redux/cartSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Cart() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -23,16 +26,17 @@ function Cart() {
     }
   }, [cart]);
   const confirmOrder = () => {
-    alert("Order Placed Successfully");
-    dispatch(emptyCart());
-    
+    dispatch(emptyCart());  
     navigate('/')
-  };
+    toast.info("New Task Added !", {
+      theme:"colored"
+     });
+  }
   function handleClick() {
     navigate("/");
   }
   return (
-    <>
+    <div>
       {cart.length > 0 ? (
         <TableContainer className="w-100 d-flex  justify-content-center">
           <Table
@@ -113,7 +117,8 @@ function Cart() {
           </button>
         </div>
       )}
-    </>
+      <ToastContainer />
+    </div>
   );
 }
 

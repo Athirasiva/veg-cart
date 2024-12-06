@@ -7,7 +7,7 @@ import Header from "./Components/Header/Header";
 import { Route, Routes } from "react-router-dom";
 function App() {
   return (
-    <div style={{ paddingTop: '65px' }}>
+    <div style={{ paddingTop: '80px' }}>
       <Header />
       <Routes>
         <Route
