@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 import { emptyCart, removeFromCart } from "../../redux/cartSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 function Cart() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -26,11 +25,11 @@ function Cart() {
     }
   }, [cart]);
   const confirmOrder = () => {
-    dispatch(emptyCart());  
-    navigate('/')
-    toast.info("New Task Added !", {
+    toast.success("Order Placed Successfully !", {
       theme:"colored"
      });
+    dispatch(emptyCart());  
+    // navigate('/')
   }
   function handleClick() {
     navigate("/");
