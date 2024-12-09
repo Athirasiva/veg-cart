@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 function Header() {
   const cart = useSelector((state) => state.cartReducer);
+  const count = cart.reduce((acc, item) => acc + item.quantity, 0)
 
   return (
     <div>
@@ -34,7 +35,7 @@ function Header() {
             // Add to cart functionality
           >
             <FaShoppingCart className="me-2" /> {/* Cart Icon */}
-            <span className="cart-count me-2">{cart.length}</span>
+            <span className="cart-count me-2">{count}</span>
             <Link to={"/cart"} className="nav-link-class">
               {" "}
               Add to Cart

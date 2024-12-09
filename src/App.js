@@ -3,6 +3,7 @@ import AboutUs from "./Components/Content/AboutUs";
 import Banner from "./Components/Content/Banner";
 import Cart from "./Components/Content/Cart";
 import DataRow from "./Components/Content/DataRow";
+import ViewItem from "./Components/Content/ViewItem";
 import Header from "./Components/Header/Header";
 import { Route, Routes } from "react-router-dom";
 function App() {
@@ -21,6 +22,7 @@ function App() {
         />
         <Route path="/about us" element={<AboutUs/> }/>
         <Route path="/cart" element={<Cart />}/>
+        <Route path="/itemView" element={<ViewItem />} />
       </Routes>
     </div>
   );

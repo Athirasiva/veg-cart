@@ -12,27 +12,35 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { emptyCart, removeFromCart } from "../../redux/cartSlice";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Cart() {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer);
   const [sum, setSum] = useState("");
   useEffect(() => {
     if (cart.length > 0) {
-      setSum(cart.map((item) => item.price).reduce((p1, p2) => p1 + p2));
+      setSum(
+        cart.reduce((total, item) => total + item.price * item.quantity, 0)
+      );
     }
   }, [cart]);
   const confirmOrder = () => {
     toast.success("Order Placed Successfully !", {
-      theme:"colored"
-     });
-    dispatch(emptyCart());  
+      theme: "colored",
+    });
+    dispatch(emptyCart());
     // navigate('/')
-  }
+  };
   function handleClick() {
     navigate("/");
+  }
+  const deleteItem = (elem) => {
+   dispatch(removeFromCart(elem.id));
+   toast.error(`${elem.name} is Removed From the Cart`, {
+    theme: "colored",
+  });
   }
   return (
     <div>
@@ -61,22 +69,29 @@ function Cart() {
                       src={row.image}
                       alt=""
                       style={{ height: "100px", width: "100px" }}
+                      className="cart-image"
                     />
                   </TableCell>
                   <TableCell align="center">{row.name}</TableCell>
-                  <TableCell align="center">0</TableCell>
+                  <TableCell align="center">{row.quantity}</TableCell>
                   <TableCell align="center">{row.price}</TableCell>
                   <TableCell align="center">
-                    <button className="btn-delete" onClick={()=>dispatch(removeFromCart(row.id))}>
-                    <AiOutlineDelete />
+                    <button
+                      className="btn-delete"
+                      onClick={() => deleteItem(row)}
+                      title={`Remove ${row.name} from cart`}
+                    >
+                      <AiOutlineDelete />
                     </button>
-                    </TableCell>
+                  </TableCell>
                 </TableRow>
               ))}
               <TableRow>
                 <TableCell rowSpan={3} />
                 <TableCell colSpan={2}>Total no of Product</TableCell>
-                <TableCell align="right">{cart.length}</TableCell>
+                <TableCell align="right">
+                  {cart.reduce((acc, item) => acc + item.quantity, 0)}
+                </TableCell>
               </TableRow>
 
               <TableRow>
