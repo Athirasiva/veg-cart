@@ -7,15 +7,16 @@ import { useLocation } from "react-router-dom";
 import "./Content.css";
 import { useDispatch } from 'react-redux';
 import { addTocart } from '../../redux/cartSlice';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function ViewItem() {
     const location = useLocation();
     const product = location.state?.product
     const dispatch = useDispatch()
     const handleAddToCart = () => {
-      console.log("clicked");
-      
-      dispatch(addTocart(product)); // Dispatch the product to the cart
+        
+      dispatch(addTocart(product)); 
+      toast.info(`${product.name} added to cart!`);
     };
   return (
     <div>
@@ -45,6 +46,7 @@ function ViewItem() {
          </Row>
         
       </Container>
+      <ToastContainer />
     </div>
   )
 }

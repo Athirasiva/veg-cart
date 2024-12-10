@@ -11,7 +11,7 @@
 .nav-link-class{
     text-decoration: none;
     color: white;
-    padding: 3px;
+    padding: 5px;
 }
 .nav-bar .cart-btn:hover{
     background-color: green;

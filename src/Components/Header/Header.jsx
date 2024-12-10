@@ -15,9 +15,9 @@ function Header() {
     <div>
       <Navbar className="nav-bar" fixed="top">
         <Container>
-          <Navbar.Brand href="#home" className="text-light">
+          <Link to={"/"}>
             <img src="/Images/image-logo.png" alt="" />
-          </Navbar.Brand>
+          </Link>
           <Nav>
             <Link to={"/"} className="nav-link-class text-light">
               Home
@@ -25,7 +25,7 @@ function Header() {
             <Link to={"/about us"} className="nav-link-class text-light">
               About Us
             </Link>
-            <Link href="#pricing" className="nav-link-class text-light">
+            <Link to={"/contact-us"} className="nav-link-class text-light">
               Contact Us
             </Link>
           </Nav>
