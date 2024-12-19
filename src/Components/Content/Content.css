@@ -137,8 +137,43 @@
     background: none;
     color:green;
 }
-
-
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.quantity-control input {
+  width: 50px;          /* Set a fixed width for the input */
+  height: 35px;         /* Set a fixed height */
+  text-align: center;   /* Center the text inside the input */
+  font-size: 16px;      /* Set a readable font size */
+  border: 2px solid #ddd; /* Light border */
+  border-radius: 5px;   /* Rounded corners */
+  outline: none;        /* Remove the default outline */
+  transition: border-color 0.3s ease; /* Smooth transition for focus */
+}
+.quantity-control input:focus {
+  border-color: green;  /* Change border color on focus */
+}
+.quantity-control button {
+  background-color: #f0f0f0; /* Light gray background */
+  border: 1px solid #ddd;     /* Light border */
+  border-radius: 5px;         /* Rounded corners */
+  padding: 5px 10px;           /* Padding inside buttons */
+  font-size: 18px;             /* Font size for icons */
+  cursor: pointer;            /* Change cursor to pointer */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+.quantity-control button:hover {
+  background-color: #007bff;  /* Blue background on hover */
+  color: white;               /* White text on hover */
+  border-color: #007bff;      /* Blue border on hover */
+}
+.quantity-control button:disabled {
+  background-color: #ccc;     /* Light gray when disabled */
+  cursor: not-allowed;        /* Show a not-allowed cursor */
+}
 /* Banner Section */
 .banner-container {
     width: 100%;

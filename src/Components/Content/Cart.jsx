@@ -11,7 +11,11 @@ import {
   TableRow,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { emptyCart, removeFromCart } from "../../redux/cartSlice";
+import {
+  emptyCart,
+  removeFromCart,
+  updateQuantity,
+} from "../../redux/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Cart() {
@@ -26,6 +30,7 @@ function Cart() {
       );
     }
   }, [cart]);
+
   const confirmOrder = () => {
     toast.success("Order Placed Successfully !", {
       theme: "colored",
@@ -33,15 +38,35 @@ function Cart() {
     dispatch(emptyCart());
     // navigate('/')
   };
+
   function handleClick() {
     navigate("/");
   }
+
   const deleteItem = (elem) => {
-   dispatch(removeFromCart(elem.id));
-   toast.error(`${elem.name} is Removed From the Cart`, {
-    theme: "colored",
-  });
-  }
+    dispatch(removeFromCart(elem.id));
+    toast.error(`${elem.name} is Removed From the Cart`, {
+      theme: "colored",
+    });
+  };
+
+  const handleQtyChange = (id, quantity) => {
+    const newQuantity = String(quantity).trim();
+    if (newQuantity === "") {
+      return; // Allow the user to clear the field without setting invalid value
+    }
+    const parsedQuantity = parseInt(newQuantity, 10);
+    // Validate if the parsed value is a valid number and greater than or equal to 1
+    if (isNaN(parsedQuantity) || parsedQuantity < 1) {
+      toast.error("Quantity must be a valid number greater than 0", {
+        theme: "colored",
+      });
+      return; // Prevent invalid input
+    }
+
+    // Dispatch the action to update the quantity in Redux store
+    dispatch(updateQuantity({ id, quantity: parsedQuantity }));
+  };
   return (
     <div>
       {cart.length > 0 ? (
@@ -73,7 +98,40 @@ function Cart() {
                     />
                   </TableCell>
                   <TableCell align="center">{row.name}</TableCell>
-                  <TableCell align="center">{row.quantity}</TableCell>
+                  <TableCell align="center">
+                    <div className="quantity-control">
+                      <button
+                        onClick={() =>
+                          handleQtyChange(row.id, row.quantity - 1)
+                        }
+                        disabled={row.quantity <= 1}
+                      >
+                        -
+                      </button>
+                      <input
+                        type="text"
+                        value={row.quantity}
+                        defaultValue={row.quantity}
+                        onChange={(e) =>
+                          handleQtyChange(row.id, e.target.value)
+                        } // Handle input changes
+                        onBlur={(e) => {
+                          // Optionally reset the value to 1 if it's left empty
+                          if (e.target.value === "") {
+                            handleQtyChange(row.id, 1); // Set to 1 if left empty
+                          }
+                        }}
+                        min={1}
+                      />
+                      <button
+                        onClick={() =>
+                          handleQtyChange(row.id, row.quantity + 1)
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
+                  </TableCell>
                   <TableCell align="center">{row.price}</TableCell>
                   <TableCell align="center">
                     <button
