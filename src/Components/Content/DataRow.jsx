@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 // import Card from 'react-bootstrap/Card';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTocart } from "../../redux/cartSlice";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,18 @@ import { useNavigate } from "react-router-dom";
 function DataRow() {
   const navigate= useNavigate()
   const dispatch = useDispatch();
+  const cart = useSelector((state)=>state.cartReducer)
+  const searchQuery = cart.searchQuery;
+  const filterData = data.filter((item)=>
+  item.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase()))
+  console.log(filterData);
+  let pdata=[]
+  if (filterData) {
+    pdata = filterData
+  }
+  else{
+    pdata= data
+  }
   const formClick = (item) =>{
     
     navigate('/itemview', { state: { product: item } });
@@ -20,7 +32,7 @@ function DataRow() {
   return (
   
     <Row xs={1} sm={2} md={3} lg={4} className="g-4 mt-3 ms-3">
-      {data.map((item) => (
+      {pdata.map((item) => (
         <Col key={item.id} >
           <Card style={{ width: "18rem" }} className="col-class" >
             <Card.Img variant="top" src={item.image} className="image-container" onClick={()=>formClick(item)}/>

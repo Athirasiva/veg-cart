@@ -21,3 +21,60 @@
     max-height: 80px;         /* Optional: Limit the size of the logo */
   width: auto;
 }
+
+/* Style the entire search form */
+.search-form {
+    display: flex;
+    align-items: center;
+    border-radius: 30px; /* Rounded corners */
+    background-color: green; /* Light background for the search bar */
+    padding: 5px 10px;
+  }
+/* On hover, change background color to green */
+.search-form:hover {
+    background-color: green; /* Green background on hover */
+  }
+ /* On hover or focus, expand the input box */
+
+/* Style the search input */
+.search-form .form-control {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding-left: 20px; /* Padding to add space between the text and the left edge */
+    background-color: green; /* White background for the input field */
+    font-size: 16px; /* Slightly larger font for better readability */
+    /* color: white;  */
+    box-sizing: border-box;
+  }
+  /* Prevent the background from turning white when focused */
+.search-form .form-control:focus {
+    background-color: green !important; /* Force green background when focused */
+    color: white; /* Change text color to white to match the green background */
+  }
+/* Hover effect for the input */
+.search-form .form-control:hover {
+    border-color: darkgreen; /* Blue border on hover */
+    outline: none;
+    background-color: green;
+  }    
+
+  
+/* Style the search button */
+.search-form .btn {
+    border-radius: 20px;
+    margin-left: 0;
+    background-color: green; 
+    border: none;
+    padding: 8px 12px;
+    color: #fff; /* White text */
+  }
+  
+/* Hover effect for the search button */
+.search-form .btn:hover {
+    background-color: green; /* Darker blue on hover */
+  }
+
+/* Optional: Focus effect */
+.search-form .form-control:focus {
+    box-shadow: 0 0 5px rgba(3, 87, 14, 0.75); 
+  }  
