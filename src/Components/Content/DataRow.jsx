@@ -13,7 +13,6 @@ function DataRow() {
   const searchQuery = cart.searchQuery;
   const filterData = data.filter((item)=>
   item.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase()))
-  console.log(filterData);
   let pdata=[]
   if (filterData) {
     pdata = filterData

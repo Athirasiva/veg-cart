@@ -21,7 +21,8 @@ import "react-toastify/dist/ReactToastify.css";
 function Cart() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cartReducer);
+  const cart = useSelector((state) => state.cartReducer.items);
+
   const [sum, setSum] = useState("");
   useEffect(() => {
     if (cart.length > 0) {
