@@ -1,34 +1,57 @@
 .nav-bar {
+  margin: 0;
     background-color: green;
     height: 80px;
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    justify-content: flex-start; /* Keep items aligned to the left */
+    padding: 0 20px;
 }
 
 .nav-item {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgba(255, 255, 255, 0.719);
+    margin: 0 10px; /* Reduce space between nav items */
 
 }
 .nav-link-class{
     text-decoration: none;
     color: white;
     padding: 5px;
+    transition: color 0.3s ease; /* Smooth color transition */
 }
-.nav-bar .cart-btn:hover{
+/* Cart Button Styles */
+.nav-bar .header-cart-btn {
+  background-color: green;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.nav-bar .header-cart-btn:hover{
     background-color: green;
     /* color: black; */
 }
 .nav-bar img{
     max-height: 80px;         /* Optional: Limit the size of the logo */
   width: auto;
+  margin-right: 10px;
 }
-
+.nav-bar .cart-btn .cart-count {
+  margin-left: 5px;
+}
 /* Style the entire search form */
 .search-form {
+    width: 250px;
     display: flex;
     align-items: center;
     border-radius: 30px; /* Rounded corners */
-    background-color: green; /* Light background for the search bar */
+    background-color: #228B22; /* Light background for the search bar */
     padding: 5px 10px;
+    transition: background-color 0.3s ease;
   }
 /* On hover, change background color to green */
 .search-form:hover {
@@ -38,22 +61,25 @@
 
 /* Style the search input */
 .search-form .form-control {
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 20px;
     padding-left: 20px; /* Padding to add space between the text and the left edge */
-    background-color: green; /* White background for the input field */
+    background-color: #228B22; /* White background for the input field */
     font-size: 16px; /* Slightly larger font for better readability */
-    /* color: white;  */
+    color: white; 
     box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
   }
   /* Prevent the background from turning white when focused */
 .search-form .form-control:focus {
     background-color: green !important; /* Force green background when focused */
     color: white; /* Change text color to white to match the green background */
+     border-color: #008200;  
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.75); /* Subtle glow effect */
   }
 /* Hover effect for the input */
 .search-form .form-control:hover {
-    border-color: darkgreen; /* Blue border on hover */
+    /* border-color: darkgreen;  */
     outline: none;
     background-color: green;
   }    
@@ -78,3 +104,4 @@
 .search-form .form-control:focus {
     box-shadow: 0 0 5px rgba(3, 87, 14, 0.75); 
   }  
+

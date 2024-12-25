@@ -62,7 +62,7 @@ function Header() {
           <Link to={"/cart"} className="nav-link-class">
             <Button
               variant="outline-light"
-              className="d-flex align-items-center cart-btn"
+              className="d-flex align-items-center header-cart-btn"
             >
               <FaShoppingCart className="me-2" /> {/* Cart Icon */}
               <span className="cart-count me-2">{count}</span>
